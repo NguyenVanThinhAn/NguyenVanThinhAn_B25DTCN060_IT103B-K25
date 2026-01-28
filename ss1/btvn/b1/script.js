@@ -1,0 +1,1 @@
+console.log(prompt("Nhập tên thư viện"));

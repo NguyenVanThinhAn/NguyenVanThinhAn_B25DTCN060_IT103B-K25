@@ -1,0 +1,1 @@
+console.log(`Số sách hiện tại: ${Number(prompt("Số sách cũ")) + Number(prompt("Số sách mới"))}` );
