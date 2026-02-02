@@ -27,15 +27,18 @@ do{
                 }
                 break;
             case 4:
+                let sumOfFizz = 0;
                 for (i = 1;i <=50;i++){
                     if((i % 3 == 0) && (i % 5 == 0)){
                         console.log("FizzBuzz");
                     } else if(i % 3 == 0){
+                        sumOfFizz++;
                         console.log("Fizz");
                     } else if (i % 5 == 0){
                         console.log("Buzz");
                     }
                 }
+                alert(`Tổng số Fizz: ${sumOfFizz}`)
             default:
                 break;
         }
