@@ -1,11 +1,9 @@
 let string = "Quý,Nam,Lan,Hùng,Nam";
 let students = string.split(",")
-
 students.reverse()
-console.log(students);
 
 console.log(`${students.includes("Lan")?"Tìm thấy Lan":"Không tìm thấy Lan"}`);
-console.log(`Nam ở vị trí:${students.indexOf("Nam")}`);
+console.log(`Nam ở vị trí:${string.split(",").indexOf("Nam")}`);
 
 
 //Bài 2
