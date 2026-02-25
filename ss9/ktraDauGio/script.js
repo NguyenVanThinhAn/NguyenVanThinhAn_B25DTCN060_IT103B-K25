@@ -15,6 +15,6 @@ let profitChecking = (arr) => {
 
 let netProfits = profitChecking(revenues);
 
-console.log("Có đơn hàng nào lỗ không:",isLessThanZero(orders));
+console.log("không có đơn hàng nào lỗ:",isLessThanZero(orders));
 console.log("Danh sách lãi:",netProfits);
 
