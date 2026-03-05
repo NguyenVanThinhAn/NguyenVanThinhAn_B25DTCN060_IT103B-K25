@@ -1,0 +1,18 @@
+#form {
+    border: solid black 1px;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+input {
+    display: block;
+    width: 95%;
+}
+
+#submitButton {
+    display: inline-block;
+}
