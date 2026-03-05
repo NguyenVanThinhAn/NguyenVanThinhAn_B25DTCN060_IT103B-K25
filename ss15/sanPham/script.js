@@ -33,10 +33,12 @@ let reloadToDoProcess = (arr,completeElement,totalElement) => {
     let completeCount = 0;
     let totalCount = 0;
 
-    for (const index in arr) {
-        if(!arr[index].remove){
+    for (const element of arr) {
+        if(!element.remove){
             totalCount++;
-            arr[index].isDone ? completeCount++ : null;
+            if(element.isDone){
+                completeCount++
+            };
         }
     }
     completeElement.innerText = completeCount;
@@ -106,6 +108,7 @@ taskList.addEventListener("click",(element) => {
         editInput.select();
     }else if(button.classList.contains("btn-save")){
         let mainElement = button.parentElement.parentElement;
+        let elementId = Number(mainElement.getAttribute("data-id"));
         let deleteButton = mainElement.querySelector(".btn-cancel");
         let editInput = mainElement.querySelector(".edit-input");
         let nameText = mainElement.querySelector(".task-text");
@@ -120,7 +123,7 @@ taskList.addEventListener("click",(element) => {
         deleteButton.classList.toggle("btn-delete");
         deleteButton.classList.toggle("btn-cancel");
 
-
+        todoListData[elementId - 1].name = editInput.value;
         nameText.innerText = editInput.value;
     }else if(button.classList.contains("btn-cancel")){
         let mainElement = button.parentElement.parentElement;
