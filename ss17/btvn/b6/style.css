@@ -1,0 +1,256 @@
+/* Đặt lại mặc định cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #fdf9f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.todo-container {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 650px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+/* --- HEADER --- */
+.header {
+    background-color: #c22525;
+    color: #ffffff;
+    text-align: center;
+    padding: 30px 20px 25px;
+}
+
+.header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.header p {
+    font-size: 15px;
+    font-weight: 400;
+    color: #f5baba;
+}
+
+/* --- KHU VỰC THỐNG KÊ --- */
+.stats-section {
+    background-color: #fefcf3;
+    text-align: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #f2ecdd;
+}
+
+.stats-section p {
+    color: #555555;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* --- KHU VỰC NHẬP LIỆU & NÚT BẤM --- */
+.input-section {
+    background-color: #fefcf3;
+    padding: 15px 35px 25px;
+    display: flex;
+    gap: 10px;
+}
+
+.task-input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.task-input:focus {
+    border-color: #f29b13;
+}
+
+.btn {
+    border: none;
+    padding: 0 20px;
+    border-radius: 6px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-add {
+    background-color: #ef8b16;
+}
+
+.btn-delete-all {
+    background-color: #cc3333;
+}
+
+/* --- DANH SÁCH CÔNG VIỆC --- */
+.task-list {
+    padding: 10px 35px 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #ffffff;
+}
+
+/* Thẻ công việc mặc định */
+.task-item {
+    background-color: #ffffec;
+    border-radius: 8px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    border-left: 6px solid #f29b13;
+    transition: all 0.2s ease;
+}
+
+/* --- CHECKBOX --- */
+.task-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid #b0b0b0;
+    margin-right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    flex-shrink: 0;
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+.task-checkbox::after {
+    content: '\2713';
+    font-size: 14px;
+    color: white;
+    display: none;
+}
+
+.task-checkbox:checked {
+    background-color: #4caf50;
+    border-color: #4caf50;
+}
+
+.task-checkbox:checked::after {
+    display: block;
+}
+
+/* --- CẤU TRÚC 2 KHỐI: XEM & SỬA --- */
+/* Đặt flex chung cho cả 2 khối để căn chỉnh giống nhau */
+.task-body, .task-edit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+/* Mặc định ẨN khối sửa */
+.task-edit {
+    display: none; 
+}
+
+/* Tên công việc (Chế độ xem) */
+.task-name {
+    font-size: 16px;
+    color: #444444;
+    flex: 1;
+}
+
+/* Textbox (Chế độ sửa) */
+.task-edit-input {
+    flex: 1;
+    font-size: 16px;
+    color: #333333;
+    padding: 4px 8px;
+    border: 1px solid #66afe9;
+    border-radius: 4px;
+    outline: none;
+    margin-right: 15px;
+    background-color: #ffffff;
+}
+
+.task-edit-input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* === LOGIC HOÁN ĐỔI LỚP (KHI CÓ CLASS .edit) === */
+/* Ẩn khối XEM đi */
+.task-item.edit .task-body {
+    display: none;
+}
+/* Hiện khối SỬA lên */
+.task-item.edit .task-edit {
+    display: flex;
+}
+/* ============================================== */
+
+/* Khu vực Icon Hành động */
+.task-actions {
+    display: flex;
+    gap: 12px;
+    font-size: 18px;
+}
+
+/* Reset CSS nút */
+.icon-edit, .icon-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    font-size: 18px;
+    padding: 0;
+}
+
+.icon-edit:hover, .icon-delete:hover {
+    opacity: 0.7;
+}
+
+.icon-edit {
+    color: #f08a24;
+}
+
+.icon-delete {
+    color: #a0a0a0;
+}
+
+/* --- HIỆU ỨNG GẠCH NGANG KHI CHECK --- */
+.task-item:has(.task-checkbox:checked) {
+    background-color: #eaf5eb;
+    border-left-color: #4caf50;
+}
+
+.task-item:has(.task-checkbox:checked) .task-body {
+    text-decoration: line-through;
+    color: #8a9c8c;
+    opacity: 0.6;
+}
+
+.task-item:has(.task-checkbox:checked) .task-name,
+.task-item:has(.task-checkbox:checked) .icon-edit,
+.task-item:has(.task-checkbox:checked) .icon-delete {
+    color: inherit; 
+}
