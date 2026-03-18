@@ -4,10 +4,8 @@ if (!data) {
   data = [];
 }
 
-// state edit
-let editIndex = -1;
+//get main element
 
-// DOM
 let contactTbody = document.getElementById("contact-tbody");
 
 let nameInput = document.getElementById("contact-name");
@@ -77,33 +75,32 @@ let resetForm = () => {
   phoneInput.value = "";
   emailInput.value = "";
 
-  editIndex = -1;
+  form.removeAttribute("data-edit-index");
   btnAdd.textContent = "Thêm";
 };
-
 
 // edit
 function editContact(index) {
   let contact = data[index];
-  
+
   nameInput.value = contact.name;
   phoneInput.value = contact.phone;
   emailInput.value = contact.email;
-  
-  editIndex = index;
+
+  form.setAttribute("data-edit-index", index);
   btnAdd.textContent = "Cập nhật";
 }
 
 // delete
 function deleteContact(index) {
   let confirmDelete = confirm("Bạn có chắc chắn muốn xóa sản phẩm này?");
-  
+
   if (!confirmDelete) return;
-  
+
   data.splice(index, 1);
-  
+
   alert("Xóa sản phẩm thành công!");
-  
+
   saveData();
   renderData();
 }
@@ -111,8 +108,6 @@ function deleteContact(index) {
 // setup
 renderData();
 
-
-// add
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -122,7 +117,9 @@ form.addEventListener("submit", function (e) {
 
   if (!validate(name, phone, email)) return;
 
-  if (editIndex !== -1) {
+  let editIndex = form.getAttribute("data-edit-index");
+
+  if (editIndex !== null) {
     data[editIndex] = { name, phone, email };
 
     alert("Cập nhật sản phẩm thành công!");
