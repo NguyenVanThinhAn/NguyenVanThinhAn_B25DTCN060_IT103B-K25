@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        
+        (function() {
+            let defaultData = "day";
+            let stateDataThemeStyle = localStorage.getItem("state-data-theme-style");
+
+            if(!stateDataThemeStyle){
+                localStorage.setItem("state-data-theme-style",defaultData);
+                stateDataThemeStyle = defaultData;
+            }
+
+            if(stateDataThemeStyle == "night"){
+                document.documentElement.classList.add("night");
+            }
+        })();
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Rikkei Tech Hub</h1>
+        <div id="btn-change-theme">
+            <button class="day">☀️</button>
+            <button class="night">🌙</button>
+        </div>
+    </header>
+    <main>
+        <h2 class="title-content">Al đang thay đối ngành công nghệ Việt Nam như thế nào?</h2>
+        <img class="img-content" src="./asset/img-2.png" alt="ảnh minh họa">
+        <div class="block-content">
+            <p class="content-sub">
+                Trong những năm gần đây, trí tuệ nhân tạo (Al) đã không còn là khái niệm xa vời. Tại Việt Nam, hàng loạt startup và doanh nghiệp lớn đã bắt đầu tích hợp AI vào sản phẩm và quy trình vận hành.
+            </p>
+            <p class="content-sub">
+                Từ trợ lý ảo, phân tích dữ liệu kinh doanh, nhận diện hình ảnh, đến tối ưu hóa chuỗi cung ứng - AI đang hiện diện ở hầu hết các lĩnh vực. Đặc biệt, sau đại dịch, nhu cầu chuyển đổi số tăng vọt đã thúc đẩy làn sóng ứng dụng AI mạnh mẽ hơn bao giờ hết.
+            </p>
+            <p class="content-sub">
+                Tuy nhiên, thách thức lớn nhất không phải là công nghệ, mà là con người: thiếu nhân lực chất lượng cao, nhận thức về đạo đức AI còn hạn chế, và nguy cơ mất việc làm ở một số ngành truyền thống.
+            </p>
+        </div>
+    </main>
+    <script src="./script.js"></script>
+</body>
+</html>
