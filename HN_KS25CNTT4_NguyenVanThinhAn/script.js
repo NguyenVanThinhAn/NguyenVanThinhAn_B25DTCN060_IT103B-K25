@@ -17,7 +17,7 @@ const inputEmail = document.getElementById("inputEmail");
 const inputAdress = document.getElementById("inputAddress");
 const searchInput = document.getElementById("searchInput");
 const sortSelect = document.getElementById("sortSelect");
-
+const resetButton = document.getElementById("reset");
 
 
 const emptyState = document.getElementById("emptyState");
@@ -251,3 +251,7 @@ searchInput.addEventListener("input",(event) => {
         render(searchInput.value);
     }
 });
+
+resetButton.addEventListener("click",(event) => {
+    resetForm();
+})
